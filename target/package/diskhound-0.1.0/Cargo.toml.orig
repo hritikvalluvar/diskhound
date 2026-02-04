@@ -8,6 +8,7 @@ repository = "https://github.com/hritikvalluvar/diskhound"
 readme = "README.md"
 keywords = ["disk", "usage", "cli", "directory", "size"]
 categories = ["command-line-utilities"]
+exclude = ["target/"]
 
 [dependencies]
 walkdir = "2"
