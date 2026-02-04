@@ -27,11 +27,11 @@ diskhound ~/Library --top 20
 ## Example output
 
 ```
-📁 Library              282.34 GiB
-📁 .Trash               7.02 GiB
-📁 Projects             3.27 GiB
-📁 .gemini              2.40 GiB
-📁 .vscode              2.30 GiB
+📁 node_modules         1.24 GiB
+📁 target               847.32 MiB
+📁 build                156.80 MiB
+📁 dist                 42.50 MiB
+📁 src                  12.30 MiB
 ```
 
 ## Features
