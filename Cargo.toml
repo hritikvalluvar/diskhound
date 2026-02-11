@@ -11,7 +11,7 @@ categories = ["command-line-utilities"]
 exclude = ["target/"]
 
 [dependencies]
-walkdir = "2"
+jwalk = "0.8"
 clap = { version = "4", features = ["derive"] }
 humansize = "2"
 anyhow = "1"

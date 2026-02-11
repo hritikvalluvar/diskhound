@@ -1,9 +1,9 @@
 use anyhow::Result;
 use clap::Parser;
 use humansize::{format_size, BINARY};
+use jwalk::WalkDir;
 use std::collections::HashMap;
 use std::path::PathBuf;
-use walkdir::WalkDir;
 
 #[derive(Parser)]
 #[command(name = "diskhound")]
@@ -32,7 +32,7 @@ fn main() -> Result<()> {
     for entry in walker {
         // Skip the root directory itself
         let path = entry.path();
-        if path == args.path {
+        if path == args.path.as_path() {
             continue;
         }
 
