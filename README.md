@@ -20,27 +20,45 @@ diskhound ~/Downloads
 # Show only top 5
 diskhound --top 5
 
+# Two-level depth grouping
+diskhound --depth 2
+
+# Exclude directories by name (repeatable)
+diskhound --exclude node_modules --exclude .git
+
+# Only show directories above a size threshold
+diskhound --min-size 100MB
+
+# Machine-readable JSON output
+diskhound --json .
+
 # Combine options
-diskhound ~/Library --top 20
+diskhound ~/Library --top 20 --exclude .cache --min-size 1MB --depth 2
 ```
 
 ## Example output
 
 ```
-📁 node_modules         1.24 GiB
-📁 target               847.32 MiB
-📁 build                156.80 MiB
-📁 dist                 42.50 MiB
-📁 src                  12.30 MiB
+  node_modules          ████████████████████  1.24 GiB   48.2%  (12847 files)
+  target                ██████████████░░░░░░  847.32 MiB 32.9%  (3241 files)
+  src                   ░░░░░░░░░░░░░░░░░░░░   12.30 MiB  0.5%  (87 files)
+
+Total: 2.57 GiB in 14312 files across 1203 directories (showing top 3)
 ```
 
 ## Features
 
-- Scans immediate subdirectories and reports total size
+- Scans subdirectories and reports total size with file counts
+- Visual size bars proportional to the largest entry
+- Percentage of total scanned size per directory
+- Depth-aware grouping (`--depth N` for multi-level views)
+- Exclude directories by name with real I/O savings (skips entire subtrees)
+- Minimum size filter (`--min-size`) with human-readable input (e.g. `100MB`, `1.5GB`)
+- Machine-readable JSON output (`--json`)
 - Human-readable size formatting (GiB, MiB, KiB)
 - Does not follow symlinks
 - Silently ignores permission errors
-- Fast traversal using walkdir
+- Fast parallel traversal using jwalk
 
 ## License
 
