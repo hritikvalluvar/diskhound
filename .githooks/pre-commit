@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+pass() { echo -e "${GREEN}PASS${NC} $1"; }
+fail() { echo -e "${RED}FAIL${NC} $1"; exit 1; }
+
+echo "Running pre-commit checks..."
+
+cargo fmt --check 2>/dev/null && pass "cargo fmt" || fail "cargo fmt — run 'cargo fmt' to fix"
+cargo clippy -- -D warnings 2>/dev/null && pass "cargo clippy" || fail "cargo clippy"
+
+echo -e "\n${GREEN}All checks passed.${NC}"
