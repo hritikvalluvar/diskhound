@@ -60,6 +60,16 @@ Total: 2.57 GiB in 14312 files across 1203 directories (showing top 3)
 - Silently ignores permission errors
 - Fast parallel traversal using jwalk
 
+## Development
+
+CI runs on every pull request to `dev` and `master` — formatting, clippy, build, and tests must all pass. A separate health-check workflow runs on push to `dev` and weekly on Monday.
+
+To enable the local pre-commit hook (runs `cargo fmt --check` and `cargo clippy`):
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## License
 
 MIT

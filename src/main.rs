@@ -143,7 +143,11 @@ fn main() -> Result<()> {
         total_files += 1;
 
         // Root-level files don't belong to any subdirectory
-        if components.len() <= 1 && relative.parent().map_or(true, |p| p == std::path::Path::new("")) {
+        if components.len() <= 1
+            && relative
+                .parent()
+                .is_none_or(|p| p == std::path::Path::new(""))
+        {
             // File directly in scanned directory — count toward totals only
             if components.len() == 1 && relative.is_file() {
                 continue;
