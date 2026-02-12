@@ -70,6 +70,20 @@ To enable the local pre-commit hook (runs `cargo fmt --check` and `cargo clippy`
 git config core.hooksPath .githooks
 ```
 
+### Publishing a release
+
+Pushing a version tag automatically publishes to crates.io:
+
+```bash
+# 1. Bump version in Cargo.toml
+# 2. Commit and merge to master
+# 3. Tag and push
+git tag v0.2.0
+git push origin v0.2.0
+```
+
+Requires a `CARGO_REGISTRY_TOKEN` secret in the repository settings.
+
 ## License
 
 MIT
